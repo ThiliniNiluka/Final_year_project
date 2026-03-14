@@ -1,5 +1,5 @@
 import { Button } from "~/components/ui/button";
-import type { Route } from "../+types/root";
+import type { Route } from "../../+types/root";
 import { Link } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
