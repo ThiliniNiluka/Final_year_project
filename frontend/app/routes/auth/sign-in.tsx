@@ -8,11 +8,12 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "~/components/ui/card";
 import { Input } from "~/components/ui/input";
-import { Form } from "react-router";
+import { Form } from "~/components/ui/form";
 import {
   FormControl,
   FormField,
@@ -20,6 +21,8 @@ import {
   FormLabel,
   FormMessage,
 } from "~/components/ui/form";
+import { Button } from "~/components/ui/button";
+import { Link } from "react-router";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -47,13 +50,18 @@ const SignIn = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-muted/40 p-4">
       <Card className="max-w-md w-full shadow-xl">
-        <CardHeader>
-          <CardTitle>Welcome back</CardTitle>
-          <CardDescription>Sign in to your account to continue</CardDescription>
+        <CardHeader className="text-center mb-5">
+          <CardTitle className="text-2xl font-bold">Welcome back</CardTitle>
+          <CardDescription className="text-sm text-muted-foreground">
+            Sign in to your account to continue
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(handleOnSubmit)}>
+            <form
+              onSubmit={form.handleSubmit(handleOnSubmit)}
+              className="space-y-6"
+            >
               <FormField
                 control={form.control}
                 name="email"
@@ -71,8 +79,35 @@ const SignIn = () => {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="password"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="password"
+                        placeholder="*********"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" className="w-full">
+                Sign In
+              </Button>
             </form>
           </Form>
+          <CardFooter>
+            <div className="flex justify-center text-center">
+              <p className="text-sm text-muted-foreground">
+                Don't have an account? <Link to="/sign-up">Sign Up</Link>
+              </p>
+            </div>
+          </CardFooter>
         </CardContent>
       </Card>
     </div>
