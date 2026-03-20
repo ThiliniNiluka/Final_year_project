@@ -57,7 +57,7 @@ const SignUp = () => {
             Create an account
           </CardTitle>
           <CardDescription className="text-sm text-muted-foreground">
-            Sign up for a new account to get started
+            Create an account to continue.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -85,6 +85,19 @@ const SignUp = () => {
               />
               <FormField
                 control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Full Name</FormLabel>
+                    <FormControl>
+                      <Input type="text" placeholder="John Doe" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
                 name="password"
                 render={({ field }) => (
                   <FormItem>
@@ -100,15 +113,32 @@ const SignUp = () => {
                   </FormItem>
                 )}
               />
+              <FormField
+                control={form.control}
+                name="confirmPassword"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Confirm Password</FormLabel>
+                    <FormControl>
+                      <Input
+                        type="password"
+                        placeholder="*********"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
               <Button type="submit" className="w-full">
-                Sign In
+                Sign Up
               </Button>
             </form>
           </Form>
-          <CardFooter>
+          <CardFooter className="flex justify-center items-center mt-6">
             <div className="flex justify-center text-center">
               <p className="text-sm text-muted-foreground">
-                Don't have an account? <Link to="/sign-up">Sign Up</Link>
+                Already have an account? <Link to="/sign-in">Sign In</Link>
               </p>
             </div>
           </CardFooter>

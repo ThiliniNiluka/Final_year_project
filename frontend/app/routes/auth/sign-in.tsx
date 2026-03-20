@@ -101,7 +101,7 @@ const SignIn = () => {
               </Button>
             </form>
           </Form>
-          <CardFooter>
+          <CardFooter className="flex justify-center items-center mt-6">
             <div className="flex justify-center text-center">
               <p className="text-sm text-muted-foreground">
                 Don't have an account? <Link to="/sign-up">Sign Up</Link>
